@@ -1,0 +1,7 @@
+packages:
+  # 包含packages所有子目录
+  - 'packages/*'
+  # 包含components 所有子目录
+  - 'components/**'
+  # 排除所有test子目录
+  - '!**/test/**'

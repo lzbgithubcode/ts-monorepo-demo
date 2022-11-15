@@ -1,0 +1,7 @@
+{
+  "name": "@zb/pkg2",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "type": "module",
+  "license": "MIT"
+}
