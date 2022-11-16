@@ -30,7 +30,7 @@ const targetTsconfigPath = resolvePath(targetPkgDir, "tsconfig.json");
 
 // 各种插件
 const tsPlugin = typescript({
-  tsconfig:targetTsconfigPath,
+  tsconfig:resolvePath(__dirname, "tsconfig.json")
 });
 const commonjsPlugin = commonjs({
   exclude: "node_modules",

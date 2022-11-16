@@ -33,8 +33,15 @@
 * @rollup/plugin-commonjs(commonjs->es给rollup使用)
 * @rollup/plugin-node-resolve(查找在node_modules中的第三方依耐项)
 * @rollup/plugin-typescript(rollup处理ts)
+* @atomico/rollup-plugin-sizes（显示打包文件大小）
+* rollup-plugin-cleanup(删除js的空格注释)
+* rollup-plugin-clear (删除指定的文件夹-用于删除dist目录)
 
+##### 6. 配置全局的tsconfig.json
+[详细tsconfig.json配置](https://www.typescriptlang.org/tsconfig)
 
+##### 5. 构建项目shell编写
+* `preinstall` npm的hook-执行install 必须使用pnpm
 
 
 
