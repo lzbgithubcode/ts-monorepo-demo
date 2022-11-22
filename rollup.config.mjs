@@ -1,5 +1,8 @@
 
 import path from "path";
+import {fileURLToPath} from 'url';
+import { createRequire } from 'module'
+
 // 查找外部模块
 import {nodeResolve} from "@rollup/plugin-node-resolve"; 
 // 将commonjs转化为es6
@@ -14,11 +17,11 @@ import cleanup from 'rollup-plugin-cleanup';
 import clearDir from "rollup-plugin-clear";
 
 
-
-if(!process.on.TARGET){
-  throw new Error("命令中必须 输入TARGET 编译目标");
+if(!process.env.TARGET){
+  throw new Error("命令中必须 输入TARGET 编译目标",);
 }
-
+const require = createRequire(import.meta.url);
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const resolvePath = (dir,p)=> path.resolve(dir, p);
 // 获取项目的packages包
 const packageDir = resolvePath(__dirname, "packages");
