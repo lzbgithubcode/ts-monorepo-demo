@@ -4,7 +4,7 @@
 
        //Modules
        "moduleResolution": "node", // 指定模块解析策略：'node' （Node.js） 或 'classic' `classic不需要`
-       "module":"commonjs",  // 设置程序的模块系统 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
+       "module":"esnext",  // 设置程序的模块系统 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
     
 
        // Emit

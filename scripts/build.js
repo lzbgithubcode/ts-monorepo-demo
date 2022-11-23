@@ -4,7 +4,11 @@ const {
   getCmdArgv, 
   getTargetDir, 
   getTargetPkg,
-  execCmd
+  execCmd,
+  logError,
+  logSuccess,
+  logInfo,
+  logWarn
 } = require("./utils");
 
 // 获取的命令参数
@@ -14,7 +18,6 @@ const isBuildTypes = (args.types || args.t) === "true"; // 是否构建类型typ
 const isRollupWatch = (args.watch || args.w) === "true"; // 是否观察rollup 的watch
 const isSourcemap = (args.sourceMap || args.s) === "true"; // 是否开启rollup 的sourceMap
 
-console.log('获取的命令参数-------',args, targets,getAllTargets());
 
 runBuild();
 
@@ -23,11 +26,17 @@ runBuild();
  * @return {*} void
  */
 async function runBuild(){
-  if(targets && targets.length > 0){
-    buildAll(targets);
-  }else {
-    buildAll(getAllTargets());
-  }
+   try {
+    if(targets && targets.length > 0){
+      await buildAll(targets);
+    }else {
+      await buildAll(getAllTargets());
+    }
+    logSuccess("恭喜您，构建成功!!!!");
+   }catch (error) {
+    logError(`很抱歉,构建失败!!!!   ${error}`); 
+     process.exit(1);
+   }
 }
 
 /**
@@ -37,7 +46,7 @@ async function runBuild(){
  */
 async function buildAll(targets =[]){
   const count = require("os").cpus().length;
-  return runParallel(count, targets, build)
+  return await runParallel(count, targets, build)
 }
 
 
@@ -55,7 +64,8 @@ async function build(target){
 
   // 2. 如果是私有 获取没有获取到包
   if (!getAllTargets().length || pkg.private) {
-    return process.exit(1);;
+    logWarn(`构建失败, 未能获取到构建的包`)
+    return process.exit(1);
   }
 
   // 3. 移除dist 目录
@@ -66,7 +76,7 @@ async function build(target){
   isSourcemap && args.push(`SOURCE_MAP:true`);
   await execCmd("rollup", args);
   
-  console.log("运行命令的参数------", target,args);
+  logInfo(`运行包---${target}, 运行包命令的参数---${args}`);
   // 5. 生成文档
 
 }
