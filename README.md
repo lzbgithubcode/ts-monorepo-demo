@@ -51,7 +51,7 @@
 
 ###### 4.3 release 工作流工具
 
-- `@changesets/cli`、[`changesets`](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范
+- `@changesets/cli`、[`changesets`](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具
 
 ###### 4.4 代码质量代码风格工具
 

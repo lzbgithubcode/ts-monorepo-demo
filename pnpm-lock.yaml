@@ -14,6 +14,7 @@ importers:
       '@rollup/plugin-node-resolve': ^15.0.1
       '@rollup/plugin-typescript': ^9.0.2
       chalk: ^4.1.2
+      enquirer: ^2.3.6
       execa: ^4.1.0
       fs-extra: ^9.1.0
       minimist: ^1.2.7
@@ -33,6 +34,7 @@ importers:
       '@rollup/plugin-node-resolve': registry.npmmirror.com/@rollup/plugin-node-resolve/15.0.1_rollup@3.4.0
       '@rollup/plugin-typescript': registry.npmmirror.com/@rollup/plugin-typescript/9.0.2_vmrh7niimjcuan47h4hgsgyxjy
       chalk: registry.npmmirror.com/chalk/4.1.2
+      enquirer: registry.npmmirror.com/enquirer/2.3.6
       execa: registry.npmmirror.com/execa/4.1.0
       fs-extra: registry.npmmirror.com/fs-extra/9.1.0
       minimist: registry.npmmirror.com/minimist/1.2.7
