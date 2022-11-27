@@ -71,7 +71,7 @@ async function runRelease(){
     await execCmd("git", ["commit", "-m", `发布${pkgDirName}包版本${targetVersion}`]);
   }else {
     logInfo('\n 暂无commit change 需要提交');
-    return;
+    return process.exit(1);
   }
 
    // 暂时不需要打tag标签
