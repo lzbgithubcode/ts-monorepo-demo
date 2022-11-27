@@ -56,6 +56,7 @@
 
 
 ###### 4.4 代码质量代码风格工具
+* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)
 
 ###### 4.5 git 工作流工具
 
