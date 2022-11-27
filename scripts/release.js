@@ -60,7 +60,7 @@ async function runRelease(){
 
   // 5. 生成修改日志
   logInfo('\n 生成修改日志......');
-  await execCmd("pnpm", ["run", "changeset"]);
+  await execCmd("pnpm", ["run", "changelog"]);
 
   // 6.push到 GitHub
   logInfo('\n push到 GitHub......');
@@ -74,7 +74,8 @@ async function runRelease(){
   }
 
    // 暂时不需要打tag标签
-   await execCmd("git", "push");
+   await execCmd("git", ["push"]);
+
 
     
 

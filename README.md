@@ -51,7 +51,9 @@
 
 ###### 4.3 release 工作流工具
 
-- `@changesets/cli`、[`changesets`](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具
+- `@changesets/cli`、[`changesets`](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - 暂时未用这个工具，生成的日志不好看
+- [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) 根据git提交记录生成changelog
+
 
 ###### 4.4 代码质量代码风格工具
 
