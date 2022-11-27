@@ -64,6 +64,19 @@ async function runRelease(){
 
   // 6.push到 GitHub
   logInfo('\n push到 GitHub......');
+  const {stdout} = await execCmd("git", ["diff"], {stdio: 'pipe' });
+  if(stdout){
+    logInfo('\n 提交commit改变的change到本地仓库');
+    await execCmd("git", ["add", "-A"]);
+    await execCmd("git", ["commit", "-m", `发布${pkgDirName}包版本${targetVersion}`]);
+  }else {
+    logInfo('\n 暂无commit change 需要提交');
+  }
+
+   // 暂时不需要打tag标签
+   await execCmd("git", "push");
+
+    
 
   // 7.publish 所有的包
   logInfo('\n publish 所有的包......');
