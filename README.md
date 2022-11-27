@@ -49,16 +49,23 @@
 - `rollup-plugin-clear` (删除指定的文件夹-用于删除 dist 目录)
 - `@rollup/plugin-babel`、`@babel/core`、`@babel/preset-env`、`@babel/preset-typescript` 使用 babel 编译，不使用 tsc 编译到 es5
 
-###### 4.3 release 工作流工具
 
-- `@changesets/cli`、[`changesets`](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - 暂时未用这个工具，生成的日志不好看
+
+
+###### 4.3 代码质量代码风格工具
+
+
+###### 4.4 git 工作流工具
+* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)提交代码commit检测commit message的工具
+
 - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) 根据git提交记录生成changelog
 
+- [@changesets/cli](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - *暂时未用这个工具，生成的日志不好看*
 
-###### 4.4 代码质量代码风格工具
-* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)
+- [husky](https://github.com/typicode/husky) - git工作流的hook,s在提交代码的时候会触发 husky
 
-###### 4.5 git 工作流工具
+
+
 
 #### 二、 项目文件配置
 
@@ -289,6 +296,31 @@ export default [...Object.values(config)];
 ##### 4、 配置 changeset
 
 1. 执行`npx changeset init` 在根目录创建`.changeset`文件夹,里面会生成一个 changeset 的`config.json`文件
+
+
+
+
+
+
+
+
+
+
+##### 5、husky配置
+1. 初始化husky， 执行命令后再项目根目录生成`.husky文件夹`,目录下面有`_和husky.sh`
+```
+  npx husky install
+```
+
+2. `.husky`目录下创建commit之前执行脚本命令（比如运行代码格式化之类）,会在`.husky`目录创建`pre-commit`的shell文件
+```sh
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+3. `.husky`目录创建commit-message校验shell
+```sh
+npx husky add .husky/commit-msg "npx --no-install commitlint -e "$1""
+```
 
 #### 三、shell 脚本编写
 
