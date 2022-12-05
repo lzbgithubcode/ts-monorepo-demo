@@ -1,4 +1,9 @@
 // 约定提交规范 - 书写规范
+
+const fs = require("fs");
+const scopesList =  fs.readdirSync("packages");
+scopesList.push("scripts脚本");
+scopesList.push("docs文档");
 module.exports = {
   types: [
     { value: 'feat', name: 'feat:     新需求或者新功能' },
@@ -14,7 +19,7 @@ module.exports = {
     { value: 'ci', name: 'ci:      持续集成' },
     { value: 'env', name: 'env:      环境变更' },
   ], 
-  // scopes: [{ name: '项目架构' }], 
+  scopes: scopesList, 
   messages: {
     type: "选择一种你的提交类型type(必选):",
     // used if allowCustomScopes is true
