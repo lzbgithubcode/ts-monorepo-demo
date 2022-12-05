@@ -84,8 +84,7 @@
 
 - [@changesets/cli](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - *暂时未用这个工具，生成的日志不好看*
 
-
-
+**5. 代码规范校验**:
 
 
 
