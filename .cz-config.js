@@ -24,7 +24,6 @@ module.exports = {
     type: "选择一种你的提交类型type(必选):",
     // used if allowCustomScopes is true
     scope: '请选择变化的范围scope(可选):',
-    customScope: '请输入模块名称scope:',
     subject: '请简要描述提交subject(必填):',
     body: '长描述，使用"|"换行body(可选):\n',
     breaking: '列出任何突发的变化breaking(可选):\n',
@@ -33,7 +32,7 @@ module.exports = {
   },
   // 跳过步骤
   allowCustomScopes: true,
-  skipQuestions: ['body','footer'],
+  skipQuestions: ['breaking'],
   allowBreakingChanges: [],
   subjectLimit: 100,
 };
