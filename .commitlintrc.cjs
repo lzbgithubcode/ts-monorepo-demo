@@ -17,7 +17,10 @@ module.exports = {
         'chore',
         'style',
         'revert',
-        'test'
+        'test',
+        "merge",
+        "env",
+        "ci"
       ]
     ],
     'type-empty': [2, 'never'],

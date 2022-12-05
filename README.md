@@ -56,18 +56,33 @@
 
 
 ###### 4.4 git 工作流工具
-* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)提交代码commit检测校验commit message的工具
 
+**1. git的hooks工具:**[husky](https://github.com/typicode/husky) - git工作流的hook,s在提交代码的时候会触发 husky
+
+**2. commit检测工具:**[commitlint](https://github.com/conventional-changelog/commitlint#getting-started)提交代码commit检测校验commit message的工具
+
+**3. 生成commit-message的工具**: 
+```md
+  方案一:  `@commitlint/prompt-cli`或者`@commitlint/cz-commitlint`
+  方案二:  `cz-conventional-changelog ` + `commitizen`
+  方案三:  `cz-customizable` + `commitizen`
+```
 
 * [commitizen](https://github.com/commitizen/cz-cli) commit -message规范，替代`git commit`
 
 * [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) commit -message的交互式创建提交信息的工具的适配器
 
+* [cz-customizable](https://github.com/leoforfree/cz-customizable) commit -message的交互式创建提交信息的工具的适配器 支持中文配置
+
+
+
+
+**3. 生成changelog的工具**:
 - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) 根据git提交记录生成changelog, 从git metadata生成变更日志
 
 - [@changesets/cli](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - *暂时未用这个工具，生成的日志不好看*
 
-- [husky](https://github.com/typicode/husky) - git工作流的hook,s在提交代码的时候会触发 husky
+
 
 
 
@@ -359,12 +374,12 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
 ```
 
 
-##### 6. 配置commitizen与配置cz-conventional-changelog
+##### 6. 配置commitizen与配置cz-conventional-changelog、cz-customizable
 1. 在项目更目录创建`touch .czrc`文件, 配置是配置的路径
 ```json
 //  .czrc 文件 配置 适配器的路径
 {
-  "path": "cz-conventional-changelog"
+  "path": "cz-customizable", // 方案二 "cz-conventional-changelog"
 }
 
 //  或者在package.json配置
@@ -372,13 +387,47 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
   // ....省略
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "cz-customizable", // 方案二 "cz-conventional-changelog"
     }
   }
 }
 ```
 
-2. 在
+2. 项目根目录创建`touch .cz-config.js`
+```js
+// 约定提交规范 - 书写规范
+module.exports = {
+  types: [
+    { value: 'feat', name: 'feat:     新需求或者新功能' },
+    { value: 'fix', name: 'fix:      修复一个Bug' },
+    { value: 'docs', name: 'docs:    变更的只有文档' },
+    { value: 'style',name: 'style:    修改样式'},
+    { value: 'refactor', name: 'refactor:    代码重构，注意和特性、修复区分开'},
+    { value: 'perf', name: 'perf:    性能优化',},
+    { value: 'test', name: 'test:    新增测试' },
+    { value: 'chore', name: 'chore:    构建/工程依赖/工具'},
+    { value: 'revert', name: 'revert:   版本回退' },
+    { value: 'merge', name: 'merge:      合并代码' },
+    { value: 'ci', name: 'ci:      持续集成' },
+    { value: 'env', name: 'env:      环境变更' },
+  ],
+  messages: {
+    type: "选择一种你的提交类型(type):",
+    scope: '\n选择一个scope (可选):',
+    // used if allowCustomScopes is true
+    customScope: '模块名称scope:',
+    subject: '短描述:\n',
+    body: '长描述，使用"|"换行(可选):\n',
+    breaking: '非兼容性说明 (可选):\n',
+    footer: '关联关闭的issue或者解决的bug编码:\n',
+    confirmCommit: '您确定要提交吗?',
+  },
+
+  allowCustomScopes: true,
+  allowBreakingChanges: ['feat', 'fix'],
+  subjectLimit: 100,
+};
+```
 
 
 #### 三、shell 脚本编写

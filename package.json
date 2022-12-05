@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "build": "node ./scripts/build.js",
     "release": "node ./scripts/release.js",
-    "commit": "cz",
+    "commit": "git add -A && git cz",
     "changelog": "conventional-changelog -p angular -i doc/CHANGELOG.md -s",
     "check-version": "changeset version"
   },
@@ -32,6 +32,7 @@
     "commitizen": "^4.2.5",
     "conventional-changelog-cli": "^2.2.2",
     "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
     "enquirer": "^2.3.6",
     "execa": "^4.1.0",
     "fs-extra": "^9.1.0",
@@ -47,5 +48,10 @@
   "engines": {
     "node": ">=14.0",
     "pnpm": ">=7.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
   }
 }
