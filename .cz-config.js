@@ -13,20 +13,21 @@ module.exports = {
     { value: 'merge', name: 'merge:      合并代码' },
     { value: 'ci', name: 'ci:      持续集成' },
     { value: 'env', name: 'env:      环境变更' },
-  ],
+  ], 
+  // scopes: [{ name: '项目架构' }], 
   messages: {
-    type: "选择一种你的提交类型(type):",
-    scope: '\n选择一个scope (可选):',
+    type: "选择一种你的提交类型type(必选):",
     // used if allowCustomScopes is true
-    customScope: '模块名称scope:\n',
-    subject: '短描述(description):\n',
+    customScope: '请输入模块名称scope:',
+    subject: '请简要描述提交(必填):',
     body: '长描述，使用"|"换行(可选):\n',
-    breaking: '非兼容性说明 (可选):\n',
-    footer: '关联关闭的issue或者解决的bug编码:\n',
+    breaking: '列出任何BREAKING CHANGES(可选):\n',
+    footer: '关联关闭的issue或者解决的bug编码(可选):\n',
     confirmCommit: '您确定要提交吗?',
   },
-
+  // 跳过步骤
   allowCustomScopes: true,
-  allowBreakingChanges: ['feat', 'fix'],
+  skipQuestions: ['body','breaking','footer'],
+  allowBreakingChanges: [],
   subjectLimit: 100,
 };

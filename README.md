@@ -72,7 +72,8 @@
 
 * [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) commit -message的交互式创建提交信息的工具的适配器
 
-* [cz-customizable](https://github.com/leoforfree/cz-customizable) commit -message的交互式创建提交信息的工具的适配器 支持中文配置
+* [cz-customizable](https://github.com/leoforfree/cz-customizable) commit -message的交互式创建提交信息的工具的适配器 支持中文配置-本文使用的方案
+
 
 
 
