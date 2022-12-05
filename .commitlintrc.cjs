@@ -1,3 +1,4 @@
+//  约定提交规范 - 校验与检测
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {

@@ -56,9 +56,14 @@
 
 
 ###### 4.4 git 工作流工具
-* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)提交代码commit检测commit message的工具
+* [commitlint](https://github.com/conventional-changelog/commitlint#getting-started)提交代码commit检测校验commit message的工具
 
-- [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) 根据git提交记录生成changelog
+
+* [commitizen](https://github.com/commitizen/cz-cli) commit -message规范，替代`git commit`
+
+* [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) commit -message的交互式创建提交信息的工具的适配器
+
+- [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) 根据git提交记录生成changelog, 从git metadata生成变更日志
 
 - [@changesets/cli](https://github.com/changesets/changesets)版本管理和`changelogs`工具,遵循 semver 规范 - 生成 changeLog 工具 - *暂时未用这个工具，生成的日志不好看*
 
@@ -292,21 +297,7 @@ export default [...Object.values(config)];
   ]
 }
 ```
-
-##### 4、 配置 changeset
-
-1. 执行`npx changeset init` 在根目录创建`.changeset`文件夹,里面会生成一个 changeset 的`config.json`文件
-
-
-
-
-
-
-
-
-
-
-##### 5、husky配置
+##### 4、husky配置
 1. 初始化husky， 执行命令后再项目根目录生成`.husky文件夹`,目录下面有`_和husky.sh`
 ```
   npx husky install
@@ -321,6 +312,74 @@ npx husky add .husky/pre-commit "npm run lint"
 ```sh
 npx husky add .husky/commit-msg "npx --no-install commitlint -e "$1""
 ```
+
+
+##### 5. 配置commitlint检测工具
+1. 安装
+```sh
+pnpm add @commitlint/cli @commitlint/config-conventional -wD
+```
+
+2. 项目根目录创建`.commitlintrc.cjs`文件
+```js
+//  配置 commit-message检测.commitlintrc.cjs
+//  约定提交规范 - 校验与检测
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'env',
+        'build',
+        'ci',
+        'perf',
+        'feat',
+        'fix',
+        'refactor',
+        'docs',
+        'chore',
+        'style',
+        'revert',
+        'test'
+      ]
+    ],
+    'type-empty': [2, 'never'],
+    'scope-empty': [2, 'never'],
+    'subject-empty': [2, 'never']
+  }
+}
+
+```
+
+3. 在husky的hooks中增加检测
+```sh
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
+```
+
+
+##### 6. 配置commitizen与配置cz-conventional-changelog
+1. 在项目更目录创建`touch .czrc`文件, 配置是配置的路径
+```json
+//  .czrc 文件 配置 适配器的路径
+{
+  "path": "cz-conventional-changelog"
+}
+
+//  或者在package.json配置
+{
+  // ....省略
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
+```
+
+2. 在
+
 
 #### 三、shell 脚本编写
 

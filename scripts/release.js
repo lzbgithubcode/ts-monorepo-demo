@@ -58,23 +58,28 @@ async function runRelease(){
   }
 
 
-  // 5. 生成修改日志
-  logInfo('\n 生成修改日志......');
-  await execCmd("pnpm", ["run", "changelog"]);
 
-  // 6.push到 GitHub
-  logInfo('\n push到 GitHub......');
+
+  // 5.commit
+  logInfo('\n commit 检测....');
   const {stdout} = await execCmd("git", ["diff"], {stdio: 'pipe' });
   if(stdout){
     logInfo('\n 提交commit改变的change到本地仓库');
     await execCmd("git", ["add", "-A"]);
-    await execCmd("git", ["commit", "-m", `发布${pkgDirName}包版本${targetVersion}`]);
+    await execCmd("pnpm", ["commit"]);
+
+    // await execCmd("git", ["commit", "-m", `发布${pkgDirName}包版本${targetVersion}`]);
   }else {
     logInfo('\n 暂无commit change 需要提交');
     return process.exit(1);
   }
 
+    // 5. 生成修改日志
+    logInfo('\n 生成修改日志......');
+    await execCmd("pnpm", ["run", "changelog"]);
+
    // 暂时不需要打tag标签
+   logInfo('\n push到 GitHub......');
    await execCmd("git", ["push"]);
 
 
