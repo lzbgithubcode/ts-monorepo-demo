@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "build": "node ./scripts/build.js",
     "release": "node ./scripts/release.js",
-    "commit": "git add -A && git cz",
+    "commit": "git add . && git cz",
     "changelog": "conventional-changelog -p angular -i doc/CHANGELOG.md -s",
     "check-version": "changeset version"
   },
@@ -51,7 +51,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-customizable"
+      "path": "cz-conventional-changelog"
     }
   }
 }
