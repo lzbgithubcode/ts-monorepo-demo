@@ -19,7 +19,7 @@ module.exports = {
     scope: '\n选择一个scope (可选):',
     // used if allowCustomScopes is true
     customScope: '模块名称scope:',
-    subject: '短描述:\n',
+    subject: '短描述(description):\n',
     body: '长描述，使用"|"换行(可选):\n',
     breaking: '非兼容性说明 (可选):\n',
     footer: '关联关闭的issue或者解决的bug编码:\n',
