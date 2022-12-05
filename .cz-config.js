@@ -23,16 +23,17 @@ module.exports = {
   messages: {
     type: "选择一种你的提交类型type(必选):",
     // used if allowCustomScopes is true
+    scope: '请选择变化的范围scope(可选):',
     customScope: '请输入模块名称scope:',
-    subject: '请简要描述提交(必填):',
-    body: '长描述，使用"|"换行(可选):\n',
-    breaking: '列出任何BREAKING CHANGES(可选):\n',
-    footer: '关联关闭的issue或者解决的bug编码(可选):\n',
+    subject: '请简要描述提交subject(必填):',
+    body: '长描述，使用"|"换行body(可选):\n',
+    breaking: '列出任何突发的变化breaking(可选):\n',
+    footer: '关联关闭的issue或者解决的bug编码footer(可选):\n',
     confirmCommit: '您确定要提交吗?',
   },
   // 跳过步骤
   allowCustomScopes: true,
-  skipQuestions: ['body','breaking','footer'],
+  skipQuestions: ['body','footer'],
   allowBreakingChanges: [],
   subjectLimit: 100,
 };
