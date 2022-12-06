@@ -13,12 +13,7 @@ const {
 } = require("./utils");
 
 
-try {
-  runPublish();
- 
-}catch (error) {
-   logError(`😭😭😭😭git push提交代码失败 !!!!!, 失败原因:\n ${error}`);
-}
+runPublish();
 
 
 
