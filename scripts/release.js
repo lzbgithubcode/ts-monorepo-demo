@@ -58,8 +58,6 @@ async function runRelease(){
   }
 
 
-
-
   // 5.commit
   logInfo('\n commit 检测....');
   const {stdout} = await execCmd("git", ["diff"], {stdio: 'pipe' });
