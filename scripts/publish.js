@@ -13,10 +13,16 @@ const {
 } = require("./utils");
 
 
-runPublish();
+try {
+  runPublish();
+ 
+}catch (error) {
+   logError(`😭😭😭😭git push提交代码失败 !!!!!, 失败原因:\n ${error}`);
+}
 
 
-async function runPublish(params) {
+
+async function runPublish() {
    
   // 1.代码格式化
 
@@ -44,5 +50,7 @@ async function runPublish(params) {
   // 5. 推送代码到github
   logInfo('\n push到 GitHub......');
   await execCmd("git", ["push"]);
+
+  logSuccess(`😁😁😁😁 恭喜你,提交代码成功`)
 
 }
