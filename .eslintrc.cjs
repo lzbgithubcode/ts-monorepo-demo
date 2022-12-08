@@ -10,7 +10,10 @@ module.exports ={
    // 扩展配置-继承 https://eslint.org/docs/latest/user-guide/configuring/configuration-files#extending-configuration-files
    extends: [
       "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
   ],
+  // 解析器配置
+  parser: "@typescript-eslint/parser",
   // 重写规则配置
   overrides: [
   ],
@@ -19,14 +22,14 @@ module.exports ={
       "ecmaVersion": "latest", // 支持es最新的版本
       "sourceType": "module",  // script / module
       "ecmaFeatures":{  // 附加选项
-        "jsx": false, // 支持jsx
+        "jsx": true, // 支持jsx
          "greater": true, // 使用严格模式
          "globalReturn": true, // 全局支持返回return
       }
   },
   // 使用插件
   plugins: [
-     
+    "@typescript-eslint"
   ],
   // 规则配置 https://eslint.org/docs/latest/user-guide/configuring/rules
   rules: {
