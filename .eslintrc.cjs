@@ -10,7 +10,8 @@ module.exports ={
    // 扩展配置-继承 https://eslint.org/docs/latest/user-guide/configuring/configuration-files#extending-configuration-files
    extends: [
       "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
   ],
   // 解析器配置
   parser: "@typescript-eslint/parser",
