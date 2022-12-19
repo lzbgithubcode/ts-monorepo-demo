@@ -16,6 +16,8 @@ import cleanup from "rollup-plugin-cleanup";
 import clearDir from "rollup-plugin-clear";
 // babel 编译es5
 import { babel } from "@rollup/plugin-babel";
+// 生成d.ts文件
+import dts from "rollup-plugin-dts";
 
 if (!process.env.TARGET) {
   throw new Error("命令中必须 输入TARGET 编译目标");
@@ -56,6 +58,8 @@ const babelPlugin = babel({
   exclude: "node_modules/**",
   babelHelpers: "bundled",
 });
+// dts文件生成
+const dtsPlugin = dts({ respectExternal: true });
 
 // 基础配置
 const baseConfig = {
@@ -123,11 +127,23 @@ const esmConfig = {
   plugins: [...baseConfig.plugins],
 };
 
+// 生成d.ts文件
+const dtsConfig = {
+  ...baseConfig,
+  output: {
+    file: `${targetPkgDist}/index.d.ts`,
+    format: "es",
+    ...baseConfig.output,
+  },
+  plugins: [dtsPlugin],
+};
+
 const config = {
   cjsConfig,
   amdConfig,
   iifeConfig,
   umdConfig,
   esmConfig,
+  dtsConfig
 };
 export default [...Object.values(config)];

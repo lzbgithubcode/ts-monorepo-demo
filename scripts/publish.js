@@ -17,7 +17,7 @@ async function runPublish() {
   const { stdout } = await execCmd("git", ["diff"], { stdio: "pipe" });
   if (stdout) {
     logInfo("\n 提交commit改变的change到本地仓库");
-    await execCmd("pnpm", ["commit"]);
+    await execCmd("pnpm", ["run", "commit"]);
   } else {
     logInfo("\n 暂无commit change 需要提交");
     return process.exit(1);

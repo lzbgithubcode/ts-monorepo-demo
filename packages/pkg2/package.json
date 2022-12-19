@@ -3,9 +3,11 @@
   "version": "1.0.1",
   "main": "dist/pkg2.cjs.js",
   "module": "dist/pkg2.es.js",
+  "typings": "dist/index.d.ts",
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ]
 }

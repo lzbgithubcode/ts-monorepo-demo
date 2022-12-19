@@ -1,14 +1,16 @@
 {
   "name": "@zb/pkg1",
   "version": "1.0.3",
-  "main": "index.ts",
+  "main": "dist/pkg1.cjs.js",
   "module": "dist/pkg1.es.js",
+  "typings": "dist/index.d.ts",
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "dependencies": {
-    "@zb/pkg2": "workspace: *"
+    "@zb/pkg2": "workspace:*"
   }
 }
