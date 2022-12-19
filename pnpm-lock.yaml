@@ -75,7 +75,10 @@ importers:
       typescript: 4.9.3
 
   packages/pkg1:
-    specifiers: {}
+    specifiers:
+      '@zb/pkg2': workspace:^1.0.1
+    dependencies:
+      '@zb/pkg2': link:../pkg2
 
   packages/pkg2:
     specifiers: {}

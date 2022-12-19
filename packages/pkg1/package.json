@@ -2,6 +2,13 @@
   "name": "@zb/pkg1",
   "version": "1.0.3",
   "main": "index.ts",
+  "module": "dist/pkg1.es.js",
   "type": "module",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@zb/pkg2": "workspace: *"
+  }
 }

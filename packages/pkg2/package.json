@@ -1,7 +1,11 @@
 {
   "name": "@zb/pkg2",
   "version": "1.0.1",
-  "main": "index.ts",
+  "main": "dist/pkg2.cjs.js",
+  "module": "dist/pkg2.es.js",
   "type": "module",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist"
+  ]
 }
