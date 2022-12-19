@@ -16,7 +16,8 @@
     "lint": "eslint --ext .ts packages/*/src/**.ts",
     "lint:fix": "npm run lint --fix",
     "format": "prettier --check --cache  \"packages/**/*.ts?(x)\"",
-    "format:fix": "prettier --write --cache  \"packages/**/*.ts?(x)\""
+    "format:fix": "prettier --write --cache  \"packages/**/*.ts?(x)\"",
+    "lint-staged": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -47,6 +48,7 @@
     "execa": "^4.1.0",
     "fs-extra": "^9.1.0",
     "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "minimist": "^1.2.7",
     "prettier": "^2.8.1",
     "rollup": "^3.3.0",
