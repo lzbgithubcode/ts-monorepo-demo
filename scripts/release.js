@@ -1,14 +1,10 @@
 const {
   getAllTargets,
-  getCmdArgv,
   getTargetDir,
   getTargetPkg,
   getTargetObjByPath,
   execCmd,
-  logError,
-  logSuccess,
   logInfo,
-  logWarn,
   logYellow,
 } = require("./utils");
 

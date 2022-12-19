@@ -1,4 +1,5 @@
 *dist
+*scripts
 node_modules
 .eslintignore
 .prettierignore
